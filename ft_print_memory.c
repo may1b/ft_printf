@@ -6,7 +6,7 @@
 /*   By: magrass <magrass@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 20:48:02 by magrass           #+#    #+#             */
-/*   Updated: 2026/04/27 00:44:53 by magrass          ###   ########.fr       */
+/*   Updated: 2026/04/27 02:28:33 by magrass          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	*ptr_to_string(const size_t ptr)
 	while (((char *)str)[i] == '0')
 		i++;
 	if (ptr == 0)
-		i++;
+		i--;
 	((char *)str)[--i] = 'x';
 	((char *)str)[--i] = '0';
 	return ((char *)str + i);
