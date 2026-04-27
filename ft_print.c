@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: magrass <magrass@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/26 21:12:55 by magrass           #+#    #+#             */
-/*   Updated: 2026/04/27 02:04:08 by magrass          ###   ########.fr       */
+/*   Created: 2026/04/27 01:53:55 by magrass           #+#    #+#             */
+/*   Updated: 2026/04/27 01:57:22 by magrass          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stddef.h>
+#include "ft_printf.h"
+#include <unistd.h>
 
-int		ft_printf(const char *fmt, ...);
+#define NULL_STR "(null)"
 
-size_t	ft_strlen(const char *s);
-
-int		ft_print_string(char *str);
-
-#endif
+int	ft_print_string(char *str)
+{
+	if (!str)
+		return (write(1, NULL_STR, ft_strlen(NULL_STR)));
+	return (write(1, str, ft_strlen(str)));
+}
