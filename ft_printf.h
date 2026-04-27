@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 # include <stddef.h>
 
-int		ft_printf(const char *fmt, ...);
+int		ft_printf(const char *fmt, ...) __attribute__((format(printf, 1, 2)));
 
 size_t	ft_strlen(const char *s);
 
