@@ -6,7 +6,7 @@
 /*   By: magrass <magrass@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 21:12:37 by magrass           #+#    #+#             */
-/*   Updated: 2026/04/27 01:53:08 by magrass          ###   ########.fr       */
+/*   Updated: 2026/04/27 02:32:04 by magrass          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,9 @@ int	print_fmt(char fmt_specifier, va_list args)
 	if (fmt_specifier == 'c')
 		return (write(STDOUT_FILENO, (arg.c = va_arg(args, int), &arg.c), 1));
 	else if (fmt_specifier == 's')
-		return (write(1, arg.str = (char *)va_arg(args, size_t),
-				ft_strlen(arg.str)));
+		return (ft_print_string((char *)va_arg(args, size_t)));
 	else if (fmt_specifier == 'i' || fmt_specifier == 'd')
-		return (write(1, ft_itoa_buf(va_arg(args, int), arg.buf),
-				ft_strlen(arg.buf)));
+		return (ft_print_string(ft_itoa_buf(va_arg(args, int), arg.buf)));
 	else if (fmt_specifier == 'u')
 		return (write(1, ft_itoa_buf(va_arg(args, unsigned int), arg.buf),
 				ft_strlen(arg.buf)));
@@ -75,6 +73,8 @@ int	print_fmt(char fmt_specifier, va_list args)
 		return (write(1, arg.str
 				= ft_strupcase(ptr_to_string(va_arg(args, size_t))) + 2,
 				ft_strlen(arg.str)));
+	else if (fmt_specifier == '%')
+		return (ft_print_string("%"));
 	return (-1);
 }
 
@@ -120,7 +120,7 @@ int	ft_printf(const char *fmt, ...)
 int	main(void)
 {
 	ft_printf("POINTER: '%p', STRING:'%s', NUMBER: '%d, hexnum: '%x',hexUp:%X\n",
-		ft_printf, "NULL", 1235, 0, 55500110);
+		ft_printf, NULL, 1235, 0, 55500110);
 	printf("POINTER: '%p', STRING: '%s', NUMBER: '%d, hexnum: '%x', hexUp:%X\n",
 		ft_printf, NULL, 1235, 10051, 55500110);
 }
