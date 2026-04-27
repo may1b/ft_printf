@@ -114,7 +114,7 @@ int	ft_printf(const char *fmt, ...)
 	va_start(args, fmt);
 	i = 0;
 	count = 0;
-	ft_print(fmt, &i, &count, &args);
+	count = ft_print(fmt, &i, &count, &args);
 	va_end(args);
 	return (count);
 }
