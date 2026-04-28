@@ -6,7 +6,7 @@
 /*   By: magrass <magrass@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 21:12:37 by magrass           #+#    #+#             */
-/*   Updated: 2026/04/27 03:29:36 by magrass          ###   ########.fr       */
+/*   Updated: 2026/04/28 10:07:24 by magrass          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*ft_itoa_buf(long n, char *buf)
 	return (buf);
 }
 
-int	print_fmt(char fmt_specifier, va_list *args)
+static int	print_fmt(char fmt_specifier, va_list *args)
 {
 	t_arg	arg;
 
@@ -67,8 +67,7 @@ int	print_fmt(char fmt_specifier, va_list *args)
 		return (write(1, ft_itoa_buf(va_arg(*args, unsigned int), arg.buf),
 				ft_strlen(arg.buf)));
 	else if (fmt_specifier == 'p')
-		return (write(1, arg.str = ptr_to_string(va_arg(*args, size_t)),
-				ft_strlen(arg.str)));
+		return (ft_print_ptr(va_arg(*args, size_t)));
 	else if (fmt_specifier == 'x')
 		return (write(1, arg.str = ptr_to_string(va_arg(*args, unsigned int))
 				+ 2, ft_strlen(arg.str)));
@@ -81,7 +80,7 @@ int	print_fmt(char fmt_specifier, va_list *args)
 	return (-1);
 }
 
-int	ft_print(const char *fmt, size_t *i, int *count, va_list *args)
+static int	ft_print(const char *fmt, size_t *i, int *count, va_list *args)
 {
 	int	result;
 
@@ -118,14 +117,3 @@ int	ft_printf(const char *fmt, ...)
 	va_end(args);
 	return (count);
 }
-#ifdef TESTING
-
-int	main(void)
-{
-	ft_printf("POINTER: '%p', STRING:'%s', NUMBER: '%d, hexnum: '%x',hexUp:%X\n",
-		ft_printf, NULL, 1235, 0, 55500110);
-	printf("POINTER: '%p', STRING: '%s', NUMBER: '%d, hexnum: '%x', hexUp:%X\n",
-		ft_printf, NULL, 1235, 10051, 55500110);
-}
-
-#endif
