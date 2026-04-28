@@ -6,7 +6,7 @@
 /*   By: magrass <magrass@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 21:12:37 by magrass           #+#    #+#             */
-/*   Updated: 2026/04/28 10:07:24 by magrass          ###   ########.fr       */
+/*   Updated: 2026/04/28 10:08:41 by magrass          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 #include <unistd.h>
 #include "ft_printf.h"
 #include "ft_print_memory.h"
-#ifdef TESTING
-# include <stdio.h>
-#endif
 
 typedef union u_arg {
 	int		c;
